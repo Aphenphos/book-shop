@@ -24,7 +24,6 @@ describe('tests if books are grabbed properly', () => {
       released: 2002,
       authors: expect.any(Array)
     };
-    console.log(res.body);
     expect(res.body).toEqual(bookThree);
   });
   

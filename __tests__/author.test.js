@@ -28,6 +28,22 @@ describe('tests if books are grabbed properly', () => {
     };
     expect(res.body).toEqual(authorThree);
   });
+
+  it('posts a new author', async () => {
+    const resp = await request(app)
+      .post('/authors')
+      .send({ name: 'Killiam', dob: '9/9/9999', pob: 'Street' });
+    expect(resp.status).toBe(200);
+    console.log(resp.body);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      name: 'Killiam',
+      dob: '9/9/9999',
+      pob: 'Street',
+      books: []
+    });
+  });  
+
   afterAll(() => {
     pool.end();
   });
