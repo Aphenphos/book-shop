@@ -23,7 +23,8 @@ describe('tests if books are grabbed properly', () => {
       id: '3',
       name: 'Milliam',
       dob: '4/4/400',
-      pob: 'Field'
+      pob: 'Field',
+      books: expect.any(Array)
     };
     expect(res.body).toEqual(authorThree);
   });

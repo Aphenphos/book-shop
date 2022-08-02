@@ -21,8 +21,10 @@ describe('tests if books are grabbed properly', () => {
     const bookThree = {
       id: '3',
       title: 'C',
-      released: 2002
+      released: 2002,
+      authors: expect.any(Array)
     };
+    console.log(res.body);
     expect(res.body).toEqual(bookThree);
   });
   afterAll(() => {
