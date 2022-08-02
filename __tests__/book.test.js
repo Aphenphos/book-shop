@@ -15,6 +15,16 @@ describe('tests if books are grabbed properly', () => {
     expect(bookTwo).toHaveProperty('title', 'B');
     expect(bookTwo).toHaveProperty('released', 2001);
   });
+
+  it('returns specific book page', async () => {
+    const res = await request(app).get('/books/3');
+    const bookThree = {
+      id: '3',
+      title: 'C',
+      released: 2002
+    };
+    expect(res.body).toEqual(bookThree);
+  });
   afterAll(() => {
     pool.end();
   });
