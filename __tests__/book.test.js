@@ -27,6 +27,20 @@ describe('tests if books are grabbed properly', () => {
     console.log(res.body);
     expect(res.body).toEqual(bookThree);
   });
+  
+  it('posts a new book', async () => {
+    const resp = await request(app)
+      .post('/books')
+      .send({ title: 'E', released: 3000 });
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      title: 'E',
+      released: 3000,
+      authors: expect.any(Array),
+    });
+  });
+  
   afterAll(() => {
     pool.end();
   });
